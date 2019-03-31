@@ -33,11 +33,19 @@ for (let i = 1; i < userInput; i = i + 1 ) {
   }
 }*/
 
+let rate = prompt("Please enter a tip rate", "Enter your answer here");
+let sum = prompt("Please enter a total", "Enter your answer here");
+
 let tipCalculator;
 tipCalculator = function(total, tipRate){
   // step 1:
   let tipAmount;
-  tipAmount = tipRate * total;
+  if(tipRate.substring(0,1) == "."){
+    tipAmount = Math.round(tipRate * total);
+  }
+  else {
+    tipAmount = Math.round((tipRate / 100) * total);
+  }
   // and step 2:
   $("#response").html("Your tip is $" + tipAmount);
 };
@@ -45,4 +53,4 @@ tipCalculator = function(total, tipRate){
 // Now call (or “execute”) the function, passing a
 // total of $50.00 and a tipRate of 20%:
 
-tipCalculator(50.00, 0.2);
+tipCalculator(sum, rate);
