@@ -34,3 +34,5 @@ kitsPoints = L.polyline(kitsPoints, {
   color: "green"
 }).addTo(bikeMap);
 kitsPoints.bindPopup("Kitsilano Bike Path");
+
+//todo: add ruler functionality
