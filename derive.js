@@ -6,8 +6,8 @@ tileLayer = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/ligh
   maxZoom: 18
 });
 //add tiles, markers and panning
-tileLayer.addTo(firstMap);
-firstMap.setView([49.276385, -123.119405], 16);
+tileLayer.addTo(bikeMap);
+bikeMap.setView([49.276385, -123.119405], 11);
 stanleyParkPoints = [
   [49.29076, -123.14713],
   [49.29328, -123.15043],
@@ -22,4 +22,13 @@ stanleyParkPoints = [
 ];
 stanleyParkLine = L.polyline(stanleyParkPoints, {
     color: "green"
+}).addTo(bikeMap);
+kitsPoints = [
+  [49.27811, -123.14610],
+  [49.27049, -123.17184],
+  [49.27452, -123.21167],
+  [49.27811, -123.24326]
+];
+kitsPoints = L.polyline(kitsPoints, {
+  color: "green"
 }).addTo(bikeMap);
