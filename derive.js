@@ -33,4 +33,4 @@ kitsPoints = [
 kitsPoints = L.polyline(kitsPoints, {
   color: "green"
 }).addTo(bikeMap);
-kitsPoints.bindPopup("Kitsilano")
+kitsPoints.bindPopup("Kitsilano Bike Path");
