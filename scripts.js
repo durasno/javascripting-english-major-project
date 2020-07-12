@@ -33,7 +33,7 @@ for (let i = 1; i < userInput; i = i + 1 ) {
   }
 }*/
 
-let rate = prompt("Please enter a tip rate", "Enter your answer here");
+/*let rate = prompt("Please enter a tip rate", "Enter your answer here");
 let sum = prompt("Please enter a total", "Enter your answer here");
 
 let tipCalculator;
@@ -53,4 +53,7 @@ tipCalculator = function(total, tipRate){
 // Now call (or “execute”) the function, passing a
 // total of $50.00 and a tipRate of 20%:
 
-tipCalculator(sum, rate);
+tipCalculator(sum, rate);*/
+
+//$("p").html("test");
+$(".fourth-paragraph").addClass("lead");
