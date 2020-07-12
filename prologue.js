@@ -101,8 +101,13 @@ $.getJSON("https://the-javascripting-english-major.org/v1/prologue.json", functi
       let wordString;
       wordString = word.text;
       if (word.modern){
-        wordString = "<a href='#' data-modern='" + word.modern + "'>" + wordString + "</a>";
+        if(word.url){
+          wordString = "<a href='#' data-modern='" + word.modern + "'" + "data-url='" + word.url + "'>" + wordString + "</a>";
+        }
+        else{
+          wordString = "<a href='#' data-modern='" + word.modern + "'>" + wordString + "</a>";
       }
+    }
       lineText = lineText + wordString + " ";
     });
     // Add lineText with a line break to the prologueText.
@@ -113,12 +118,21 @@ $.getJSON("https://the-javascripting-english-major.org/v1/prologue.json", functi
   // Replace the content of #prologue.
   $("#prologue").html(prologueText);
   $("#prologue a").click(function(){
-    let glossText, clickedWord, modernWord;
+    let glossText, clickedWord, modernWord, defLink;
     clickedWord = $( this ).text();
     // .data("modern") looks for the data-modern HTML attribute.
     modernWord = $( this ).data("modern");
-    glossText = "<h2>You clicked on " + clickedWord + ", which means " + modernWord +"</h2>";
+    defLink = $( this ).data("url");
+    //defLink = $( this ).data("modern").data("url");
+    if(defLink){
+      glossText = "<h2>You clicked on " + clickedWord + ", which means " + modernWord + ". To find out more click " + "<a href=" + defLink + ">" + "here </a>" + "." + "</h2>";
+    }
+    else{
+      glossText = "<h2>You clicked on " + clickedWord + ", which means " + modernWord + ". </h2>";
+    }
+
     $("#glosses").html(glossText);
+    //$("#glosses").html(defLink);
   });
 }); // Close the callback function & method.
 
