@@ -23,6 +23,7 @@ stanleyParkPoints = [
 stanleyParkLine = L.polyline(stanleyParkPoints, {
     color: "green"
 }).addTo(bikeMap);
+stanleyParkLine.bindPopup("Stanley Park Sea Wall");
 kitsPoints = [
   [49.27811, -123.14610],
   [49.27049, -123.17184],
@@ -32,3 +33,4 @@ kitsPoints = [
 kitsPoints = L.polyline(kitsPoints, {
   color: "green"
 }).addTo(bikeMap);
+kitsPoints.bindPopup("Kitsilano")
