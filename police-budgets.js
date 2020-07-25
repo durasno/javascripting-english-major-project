@@ -9,7 +9,7 @@ budgetTileLayer = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.ne
 budgetMap.setView([40.730833, -73.9975], 16);
 
 let policeBudgetFeatures;
-$.getJSON("police-budgets.geojson", function(data){
+$.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major-project/master/data/police-budgets.geojson", function(data){
   // Define the Leaflet layer.
   let policeBudgetLayer;
   // Iterate over the .features property of the GeoJSON object to
@@ -32,22 +32,23 @@ $.getJSON("police-budgets.geojson", function(data){
       latLng: L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])
     };
   });
-  console.log(policeBudgetFeatures[1].properties.city);
   // Now create a Leaflet feature group made up of markers for each
   // object in policeBudgetFeatures.
-  /*policeBudgetLayer = L.featureGroup(policeBudgetFeatures.map(function(feature){
-    return L.marker(feature.latLng);
+  policeBudgetLayer = L.featureGroup(policeBudgetFeatures.map(function(feature){
+    let marker = L.marker(feature.latLng);
+    //return L.marker(feature.latLng);
+
+    marker.bindPopup('City: ' + feature.city + '<br>' + '% General Fund (2017): ' + feature.pct_gen_17);
+    return marker;
     })
   );
   // Add the layer to the map.
-  policeBudgetLayer.addTo(map);
+  policeBudgetLayer.addTo(budgetMap);
   // Redraw the map so that all the markers are visible.
-  map.fitBounds(policeBudgetLayer.getBounds());
+  budgetMap.fitBounds(policeBudgetLayer.getBounds());
   // Zoom out one level to give some padding.
-  map.zoomOut(1);*/
+  budgetMap.zoomOut(1);
 });
-
-
 
 
 /*var out; //function to geocode address data, continue developing for future
