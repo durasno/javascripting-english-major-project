@@ -6,7 +6,7 @@ budgetTileLayer = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.ne
               subdomains: "abcd",
               maxZoom: 18
             }).addTo(budgetMap);
-budgetMap.setView([40.730833, -73.9975], 16);
+budgetMap.setView([33.753746, -84.386330], 16);
 
 let policeBudgetFeatures;
 $.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major-project/master/data/police-budgets.geojson", function(data){
@@ -35,13 +35,53 @@ $.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major
   // Now create a Leaflet feature group made up of markers for each
   // object in policeBudgetFeatures.
   policeBudgetLayer = L.featureGroup(policeBudgetFeatures.map(function(feature){
-    let marker = L.marker(feature.latLng);
+    //let marker = L.marker(feature.latLng);
     //return L.marker(feature.latLng);
+    let pct_num = parseFloat(feature.pct_gen_20) / 100;
+    let options = {
+    	data: {
+    		//"dataPoint1": Math.random() * 20,
+        "Police Funding: ": pct_num,
+    		"Other Funding": 1 - pct_num
+    	},
+    	chartOptions: {
+    		"Police Funding: ": {
+    			fillColor: "red",
+    			//minValue: 0,
+    			//maxValue: 20,
+    			maxHeight: 20,
+    			displayText: function (value) {
+    				return feature.pct_gen_20 + " of General Budget";
+    			}
+    		},
+    		"Other Funding": {
+    			fillColor: "blue",
+    			//minValue: 0,
+    			//maxValue: 20,
+    			maxHeight: 20,
+    			displayText: function (value) {
+    				return "";
+    			}
+    		},
+    	},
+    	//weight: 1//,
+      //opacity:1,
+      //fill: 1,
+      //fillColor: "green",
+      fillOpacity:0.8//,
+    ///... // Other L.Path style options
+    };
 
-    marker.bindPopup('City: ' + feature.city + '<br>' + '% General Fund (2017): ' + feature.pct_gen_17);
-    return marker;
+    /*let BarChartMarker = new L.BarChartMarker(new L.LatLng(33.753746, -84.386330), options).addTo(budgetMap);//works*/
+
+    let PieChartMarker = new L.PieChartMarker(feature.latLng, options);//.addTo(budgetMap);
+
+  /*marker.bindPopup("City: " + feature.city + "<br>" + "% General Fund (2017): " + feature.pct_gen_17);*/
+    //return marker;
+    return PieChartMarker;
     })
   );
+
   // Add the layer to the map.
   policeBudgetLayer.addTo(budgetMap);
   // Redraw the map so that all the markers are visible.
@@ -49,6 +89,7 @@ $.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major
   // Zoom out one level to give some padding.
   budgetMap.zoomOut(1);
 });
+
 
 
 /*var out; //function to geocode address data, continue developing for future
