@@ -1,0 +1,13 @@
+﻿city,lat,long,pct_gen_fund_17,per_capita_operating_17,police_spending_total_operating_17,pct_general_fund_20,per_capita_operating_20,police_spending_total_operating_20,fy20_source
+Atlanta,33.748997,-84.387985,29.70%,$486 ,"$218,300,000 ",30.30%,$490 ,"$248,508,776 ",https://www.atlantaga.gov/home/showdocument?id=46291
+Baltimore,39.290386,-76.61219,25.60%,$772 ,"$480,700,000 ",26.40%,$904 ,"$536,376,477 ",https://bbmr.baltimorecity.gov/sites/default/files/fy21_execsumm_2020-05-06_FINAL.pdf
+Chicago,41.878113,-87.629799,38.60%,$537 ,"$1,460,000,000 ",37.00%,$624 ,"$1,680,777,349 ",https://www.chicago.gov/content/dam/city/depts/obm/supp_info/2020Budget/2020BUDGETORDINANCE.pdf
+Detroit,42.331429,-83.045753,30.00%,$450 ,"$310,200,000 ",29.90%,$493 ,"$330,015,742 ",https://detroitmi.gov/sites/detroitmi.localhost/files/2020-06/2%20-%20FY%202021-24%20Four-Year%20Financial%20Plan%20-%20Section%20B%20Agency%20Descriptions%20-%20Adopted.pdf
+Houston,29.760427,-95.369804,35.00%,$383 ,"$850,400,000 ",33.10%,$403 ,"$934,098,364 ",https://www.houstontx.gov/budget/20budadopt/FY2020_Adopted_Budget.pdf
+Los Angeles,34.053345,-118.242349,25.70%,$381 ,"$1,485,600,000 ",25.50%,$436 ,"$1,733,838,124 ",https://lacontroller.org/wp-content/uploads/2019/09/BUDGET-2019-20.pdf;http://cao.lacity.org/budget20-21/2020-21Proposed_Budget.pdf (36); https://lacontroller.org/wp-content/uploads/2019/02/Budget-2016-17.pdf (36)
+Minneapolis,44.977766,-93.265067,35.80%,$408 ,"$163,200,000 ",,,,
+New York City,40.713012,-74.00713,8.20%,$611 ,"$5,150,851,761 ",7.70%,$672 ,"$5,606,475,364 ",(total city funds) https://www1.nyc.gov/assets/omb/downloads/pdf/erc4-20.pdf
+Oakland,37.804855,-122.272504,41.20%,$594 ,"$242,500,000 ",44.40%,$736 ,"$318,707,837 ",https://cao-94612.s3.amazonaws.com/documents/FY-2019-21-Adopted-Budget-Policy-Book-FINAL-WEB-VERSION.pdf
+Orlando,28.538304,-81.378906,32.30%,$599 ,"$153,800,000 ",31.60%,$635 ,"$182,564,811 ",https://www.orlando.gov/files/sharedassets/public/documents/obfs/budget/2019-2020/city-of-orlando-fy2019-2020-budget-book.pdf
+Milwaukee,43.041561,-87.910062,47.70%,$507 ,"$302,083,020 ",46.60%,$504 ,"$297,366,419 ",https://city.milwaukee.gov/ImageLibrary/User/crystali/Budget-Books/2020Budget2.pdf; https://city.milwaukee.gov/ImageLibrary/User/crystali/Budget-Books/2017_adopted_budget.pdf; https://city.milwaukee.gov/ImageLibrary/User/crystali/Budget-Books/2017_adopted_budget.pdf
+Nashville,36.167449,-86.778726,20.70%,$298 ,"$198,471,000 ",20.80%,$323.17 ,"$216,790,900 ",https://www.nashville.gov/Portals/0/SiteContent/Finance/docs/OMB/fy21_budget/Recommended/FY21RecommendedBudgetBook.pdf; https://www.nashville.gov/Portals/0/SiteContent/Finance/docs/OMB/FY17budget/Final/FY2017FinalBudgetBook.pdf
