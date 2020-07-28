@@ -39,6 +39,7 @@ $.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major
     //return L.marker(feature.latLng);
     let pct_num = parseFloat(feature.pct_gen_20) / 100;
     let options = {
+      //recordsField: null,
     	data: {
     		//"dataPoint1": Math.random() * 20,
         "Police Funding: ": pct_num,
@@ -47,9 +48,9 @@ $.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major
     	chartOptions: {
     		"Police Funding: ": {
     			fillColor: "red",
-    			//minValue: 0,
+    			//minValue: 1,
     			//maxValue: 20,
-    			maxHeight: 20,
+    			//maxHeight: 20,
     			displayText: function (value) {
     				return feature.pct_gen_20 + " of General Budget";
     			}
@@ -58,12 +59,44 @@ $.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major
     			fillColor: "blue",
     			//minValue: 0,
     			//maxValue: 20,
-    			maxHeight: 20,
+    			//maxHeight: 20,
     			displayText: function (value) {
     				return "";
     			}
     		},
     	},
+      /*layerOptions: {
+				fillOpacity: 0.9,
+				opacity: 1,
+				weight: 0.5,
+				radius: 10,
+				width: 5,
+				barThickness: 5
+			},*/
+			// Use displayOptions to dynamically size the radius and barThickness according to the number of
+			// polling results
+			/*displayOptions: {
+				'poll_count': {
+					radius: new L.LinearFunction(new L.Point(0, 10), new L.Point(1000, 100)),
+					barThickness: new L.LinearFunction(new L.Point(0, 4), new L.Point(1000, 80))
+				}
+			},*/
+			tooltipOptions: { //this controls the shape of the text box
+        //to do: change corners to rounded and add gradient for fill for text box
+        //permanent: true
+				//iconSize: new L.Point(80,55),
+				//iconAnchor: new L.Point(-5,55)
+        //iconBo: round
+        //cornerRadius:50
+			},
+			/*onEachRecord: function (layer,record) {
+				var $html = $(L.HTMLUtils.buildTable(record));
+
+				layer.bindPopup($html.wrap('<div/>').parent().html(),{
+					minWidth: 400,
+					maxWidth: 400
+				});
+			},*/
     	//weight: 1//,
       //opacity:1,
       //fill: 1,
@@ -75,10 +108,13 @@ $.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major
     /*let BarChartMarker = new L.BarChartMarker(new L.LatLng(33.753746, -84.386330), options).addTo(budgetMap);//works*/
 
     let PieChartMarker = new L.PieChartMarker(feature.latLng, options);//.addTo(budgetMap);
+    //PieChartMarker.bindPopup(feature.city);
+    /*let callout = new L.Callout(feature.latLng, {arrow: true});*/
 
   /*marker.bindPopup("City: " + feature.city + "<br>" + "% General Fund (2017): " + feature.pct_gen_17);*/
     //return marker;
     return PieChartMarker;
+    //return callout;
     })
   );
 
