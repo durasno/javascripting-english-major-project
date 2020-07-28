@@ -10,8 +10,10 @@ map.setView([40.730833, -73.9975], 16);
 // Define the features array.
 let couldBeFeatures;
 $.getJSON("https://the-javascripting-english-major.org/v1/could-be.geo.json", function(data){
+  //console.log(data.features[1].properties.name);
   // Define the Leaflet layer.
-  let couldBeLayer;
+  console.log("test");
+  /*let couldBeLayer;
   // Iterate over the .features property of the GeoJSON object to
   // create an array of objects (features), with every object’s
   // properties as noted.
@@ -35,11 +37,11 @@ $.getJSON("https://the-javascripting-english-major.org/v1/could-be.geo.json", fu
   couldBeLayer = L.featureGroup(couldBeFeatures.map(function(feature){
     return L.marker(feature.latLng);
     })
-  )
+  );
   // Add the layer to the map.
   couldBeLayer.addTo(map);
   // Redraw the map so that all the markers are visible.
   map.fitBounds(couldBeLayer.getBounds());
   // Zoom out one level to give some padding.
-  map.zoomOut(1);
+  map.zoomOut(1);*/
 });
