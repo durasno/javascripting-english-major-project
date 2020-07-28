@@ -2,14 +2,17 @@
 let md;
 md = window.markdownit({html: true}).use(window.markdownitFootnote);
 // Load the Markdown file with jQuery.
-$.ajax({
+/*$.ajax({
   url: "https://the-javascripting-english-major.org/v1/examples/markdown/hastings-street.md",
-  success: function(markdown){
+  success: function(markdown){*/
+  $.ajax({
+    url: "https://raw.githubusercontent.com/durasno/javascripting-english-major-project/master/data/hastings-street.md",
+    success: function(markdown){
     // Convert the Markdown to HTML.
     let html;
     html = md.render(markdown);
     // Print the HTML to #content using jQuery.
-    $("#content").html(html);
+    $("#content").html(html); //code wasn't working because content wasn't defined in the html sample
   }
 });
 
