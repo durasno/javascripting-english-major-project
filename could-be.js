@@ -1,3 +1,18 @@
+// Define and assign a Markdown-it renderer.
+let md;
+md = window.markdownit({html: true}).use(window.markdownitFootnote);
+// Load the Markdown file with jQuery.
+$.ajax({
+  url: "https://the-javascripting-english-major.org/v1/examples/markdown/hastings-street.md",
+  success: function(markdown){
+    // Convert the Markdown to HTML.
+    let html;
+    html = md.render(markdown);
+    // Print the HTML to #content using jQuery.
+    $("#content").html(html);
+  }
+});
+
 let map, tileLayer;
 map = L.map("could-be-map");
 tileLayer = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
@@ -9,11 +24,11 @@ map.setView([40.730833, -73.9975], 16);
 
 // Define the features array.
 let couldBeFeatures;
-$.getJSON("https://the-javascripting-english-major.org/v1/could-be.geo.json", function(data){
+/*$.getJSON("https://the-javascripting-english-major.org/v1/could-be.geo.json", function(data){*/
+$.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major-project/master/data/could-be.geo.json", function(data){
   //console.log(data.features[1].properties.name);
   // Define the Leaflet layer.
-  console.log("test");
-  /*let couldBeLayer;
+  let couldBeLayer;
   // Iterate over the .features property of the GeoJSON object to
   // create an array of objects (features), with every object’s
   // properties as noted.
@@ -43,5 +58,5 @@ $.getJSON("https://the-javascripting-english-major.org/v1/could-be.geo.json", fu
   // Redraw the map so that all the markers are visible.
   map.fitBounds(couldBeLayer.getBounds());
   // Zoom out one level to give some padding.
-  map.zoomOut(1);*/
+  map.zoomOut(1);
 });
