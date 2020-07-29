@@ -1,11 +1,11 @@
 // Define and assign a Markdown-it renderer.
-let md;
+/*let md;
 md = window.markdownit({html: true}).use(window.markdownitFootnote);
-// Load the Markdown file with jQuery.
+// Load the Markdown file with jQuery.*/
 /*$.ajax({
   url: "https://the-javascripting-english-major.org/v1/examples/markdown/hastings-street.md",
   success: function(markdown){*/
-  $.ajax({
+  /*$.ajax({
     url: "https://raw.githubusercontent.com/durasno/javascripting-english-major-project/master/data/hastings-street.md",
     success: function(markdown){
     // Convert the Markdown to HTML.
@@ -14,6 +14,23 @@ md = window.markdownit({html: true}).use(window.markdownitFootnote);
     // Print the HTML to #content using jQuery.
     $("#content").html(html); //code wasn't working because content wasn't defined in the html sample
   }
+});*/
+let md;
+md = window.markdownit({html: true}).use(window.markdownitFootnote);
+["hastings-street", "eighteenth-and-vine",
+  "fifth-and-mound", "introduction",
+  "lenox-avenue", "rampart"].forEach(function(tab){
+  // Create a variable tab that has the name as a string.
+  $.ajax({
+    // tab + ".md" yields, for example, "rampart.md".
+    url: "https://the-javascripting-english-major.org/v1/examples/markdown/" + tab + ".md",
+    success: function(markdown){
+      let html;
+      html = md.render(markdown);
+      // "#rampart", for example.
+      $("#" + tab).html(html);
+    }
+  });
 });
 
 let map, tileLayer;
