@@ -6,7 +6,7 @@ md = window.markdownit({html: true}).use(window.markdownitFootnote);
   url: "https://the-javascripting-english-major.org/v1/examples/markdown/hastings-street.md",
   success: function(markdown){*/
   $.ajax({
-    url: "https://raw.githubusercontent.com/durasno/javascripting-english-major-project/master/data/police-budgets.md",
+    url: "https://raw.githubusercontent.com/duraznoj/javascripting-english-major-project/master/data/police-budgets.md",
     success: function(markdown){
     // Convert the Markdown to HTML.
     let html;
@@ -27,7 +27,7 @@ budgetTileLayer = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.ne
 budgetMap.setView([33.753746, -84.386330], 16);
 
 let policeBudgetFeatures;
-$.getJSON("https://raw.githubusercontent.com/durasno/javascripting-english-major-project/master/data/police-budgets.geojson", function(data){
+$.getJSON("https://raw.githubusercontent.com/duraznoj/javascripting-english-major-project/master/data/police-budgets.geojson", function(data){
   // Define the Leaflet layer.
   let policeBudgetLayer;
   // Iterate over the .features property of the GeoJSON object to

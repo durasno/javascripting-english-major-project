@@ -88,7 +88,7 @@ $("#prologue").html(line1Text);*/
   $("#glosses").html(glossText);
 });*/
 
-$.getJSON("https://the-javascripting-english-major.org/v1/prologue.json", function(data){ // Note the data variable!
+$.getJSON("https://raw.githubusercontent.com/duraznoj/javascripting-english-major-project/master/data/prologue.json", function(data){ // Note the data variable!
   let prologueText; // Define the variable you didn’t need before.
   prologueText = "<blockquote><p>"; // Open the tags.
   // Now you can iterate over the data variable’s .lines property:
