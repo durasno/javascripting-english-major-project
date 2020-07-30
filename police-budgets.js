@@ -1,20 +1,28 @@
+//define input dataPoint1
+let budgetData = "https://raw.githubusercontent.com/duraznoj/javascripting-english-major-project/master/data/police-budgets.geojson"
+
 // Define and assign a Markdown-it renderer.
-let md;
-md = window.markdownit({html: true}).use(window.markdownitFootnote);
-// Load the Markdown file with jQuery.
-/*$.ajax({
-  url: "https://the-javascripting-english-major.org/v1/examples/markdown/hastings-street.md",
-  success: function(markdown){*/
-  $.ajax({
-    url: "https://raw.githubusercontent.com/duraznoj/javascripting-english-major-project/master/data/police-budgets.md",
+/*let md;
+md = window.markdownit({html: true}).use(window.markdownitFootnote);*/
+/*["hastings-street", "eighteenth-and-vine",
+  "fifth-and-mound", "introduction",
+  "lenox-avenue", "rampart"].forEach(function(tab){*/
+  /*["hastings-street", "eighteenth-and-vine",
+    "fifth-and-mound", "introduction",
+    "lenox-avenue", "rampart"].forEach(function(tab){*/
+  // Create a variable tab that has the name as a string.
+  //.ajax({
+    // tab + ".md" yields, for example, "rampart.md".
+    /*url: "https://the-javascripting-english-major.org/v1/examples/markdown/" + tab + ".md",*/
+    /*url: "https://raw.githubusercontent.com/duraznoj/javascripting-english-major-project/master/data/" + tab + ".md",
     success: function(markdown){
-    // Convert the Markdown to HTML.
-    let html;
-    html = md.render(markdown);
-    // Print the HTML to #content using jQuery.
-    $("#content").html(html); //code wasn't working because content wasn't defined in the html sample
-  }
-});
+      let html;
+      html = md.render(markdown);
+      // "#rampart", for example.
+      $("#" + tab).html(html);
+    }
+  });
+});*/
 
 //let geocodeOut;
 let budgetMap, budgetTileLayer;
@@ -27,13 +35,32 @@ budgetTileLayer = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.ne
 budgetMap.setView([33.753746, -84.386330], 16);
 
 let policeBudgetFeatures;
-$.getJSON("https://raw.githubusercontent.com/duraznoj/javascripting-english-major-project/master/data/police-budgets.geojson", function(data){
+$.getJSON(budgetData, function(data){
   // Define the Leaflet layer.
   let policeBudgetLayer;
   // Iterate over the .features property of the GeoJSON object to
   // create an array of objects (features), with every object’s
   // properties as noted.
   policeBudgetFeatures = data.features.map(function(feature){
+
+    //TODO- design data table structure, and update script to populate data from geojson in table
+    let obj = {};
+    for(let key in feature.properties){
+      if (feature.properties.hasOwnProperty(key)) {
+        //console.log(key + " -> " + feature.properties[key]);
+        //let array = [];
+        //array.push({key: feature.properties[key]});
+        //return array;
+        obj[key] = feature.properties[key];
+      }
+      //$("#" + feature.properties.city).html(array);
+    }
+    //console.log(array);
+    console.log(obj);
+    //$("#" + feature.properties.city).html(obj);
+
+    //$("#" + feature.properties.city).html(feature.properties.forEach(function(prop){
+      //return prop;
     // This return returns an object.
     return {
       city: feature.properties.city,
@@ -126,7 +153,7 @@ $.getJSON("https://raw.githubusercontent.com/duraznoj/javascripting-english-majo
     /*let BarChartMarker = new L.BarChartMarker(new L.LatLng(33.753746, -84.386330), options).addTo(budgetMap);//works*/
 
     let PieChartMarker = new L.PieChartMarker(feature.latLng, options);//.addTo(budgetMap);
-    //PieChartMarker.bindPopup(feature.city);
+    PieChartMarker.bindPopup(feature.city);
     /*let callout = new L.Callout(feature.latLng, {arrow: true});*/
 
   /*marker.bindPopup("City: " + feature.city + "<br>" + "% General Fund (2017): " + feature.pct_gen_17);*/
@@ -142,6 +169,8 @@ $.getJSON("https://raw.githubusercontent.com/duraznoj/javascripting-english-majo
   budgetMap.fitBounds(policeBudgetLayer.getBounds());
   // Zoom out one level to give some padding.
   budgetMap.zoomOut(1);
+
+
 });
 
 
